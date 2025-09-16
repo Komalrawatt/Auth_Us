@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { toast } from "react-toastify";
-import { motion } from 'framer-motion'; // Add this import
+import { motion } from 'framer-motion';
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -13,30 +13,30 @@ const Register = () => {
         email: formData.email,
         name: formData.name,
         course: formData.course,
-        phoneno: formData.phoneNo
+        phoneno: formData.phoneNo,
+        role: formData.role,
+        performance: formData.performance
       });
-      const res = response.data; // backend JSON response
+      const res = response.data;
       console.log("Response from backend:", res);
       toast.success(res.message);
 
-       // Clear form fields after successful submission
       setFormData({
         name: '',
         rollNo: '',
         course: '',
         email: '',
-        phoneNo: ''
+        phoneNo: '',
+        role:'',
+        performance:''
       });
 
     } catch (error) {
-          if (error.response) {
-      // ✅ backend responded with an error status (400/409/500 etc.)
-      toast.success(error.response.data.message);
-    } else {
-      // ❌ network / server down
-     console.log("Network/server error:", error.message);
-    }
-
+      if (error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        console.log("Network/server error:", error.message);
+      }
       console.error("Error fetching:", error);
     }
   }
@@ -46,7 +46,9 @@ const Register = () => {
     rollNo: '',
     course: '',
     email: '',
-    phoneNo: ''
+    phoneNo: '',
+    role:'',
+    performance:''
   });
 
   const handleChange = (e) => {
@@ -60,7 +62,6 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form data:', formData);
-    // Add your form submission logic here
     formHandler();
   };
 
@@ -70,21 +71,23 @@ const Register = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-xl sm:max-w-3xl md:w-3/4 lg:w-2/5 h-auto max-h-[90vh] sm:max-h-[85vh] mx-auto bg-white/10 backdrop-blur-lg rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.3)] overflow-auto flex justify-center"
+        className="w-full max-w-3xl md:w-3/4 lg:w-2/5 h-auto min-h-[95vh] mx-auto bg-white/10 backdrop-blur-lg 
+                   rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.3)] overflow-auto flex justify-center"
       >
-        <div className="flex flex-col justify-between h-full p-4 sm:p-6 md:p-8 gap-4">
-          <div className="text-center mb-4 sm:mb-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">
+        <div className="flex flex-col justify-between h-[100%] p-6 sm:p-8 md:p-10 gap-6">
+          <div className="text-center mb-6">
+            <h2 className="regular text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
               Join the Fiesta! 🎉
             </h2>
-            <p className="text-purple-200 text-xs sm:text-sm">Register now for an unforgettable freshman experience</p>
+            <p className="text-purple-200 text-sm sm:text-base md:text-lg">
+🎓 Only 1st-year students with a valid college ID card are allowed in the event ✅            </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4 flex flex-col gap-3">
-            {/* Input field groups with improved styling */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5">
+          <form onSubmit={handleSubmit} className="space-y-5 flex flex-col gap-5">
+            {/* Bigger fields + labels */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="input-group">
-                <label className="block text-sm font-medium text-purple-200 mb-1">
+                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
                   Full Name
                 </label>
                 <input
@@ -93,15 +96,15 @@ const Register = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                           placeholder-purple-300/50"
+                  className=" regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
+                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
+                             placeholder-purple-300/50"
                   placeholder="Enter your name"
                 />
               </div>
 
               <div className="input-group">
-                <label className="block text-sm font-medium text-purple-200 mb-1">
+                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
                   Roll Number
                 </label>
                 <input
@@ -110,16 +113,16 @@ const Register = () => {
                   value={formData.rollNo}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                           placeholder-purple-300/50"
+                  className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
+                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
+                             placeholder-purple-300/50"
                   placeholder="Enter roll number"
                 />
               </div>
             </div>
 
             <div className="input-group">
-              <label className="block text-sm font-medium text-purple-200 mb-1">
+              <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
                 Course
               </label>
               <input
@@ -128,16 +131,50 @@ const Register = () => {
                 value={formData.course}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                         focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                         placeholder-purple-300/50"
+                className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
+                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
+                           placeholder-purple-300/50"
                 placeholder="Your course name"
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5">
+            <div className="input-group">
+              <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+                Are you a participant or an audience?
+              </label>
+              <input
+                type="text"
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                required
+                className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
+                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
+                           placeholder-purple-300/50"
+                placeholder="participant / audience"
+              />
+            </div>
+
+            <div className="input-group">
+              <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+                If Participant, what are you performing? Otherwise type "N/A"
+              </label>
+              <input
+                type="text"
+                name="performance"
+                value={formData.performance}
+                onChange={handleChange}
+                required
+                className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
+                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
+                           placeholder-purple-300/50"
+                placeholder="Dance / Singing / Fashion Show / Nukkad Natak / N/A"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="input-group">
-                <label className="block text-sm font-medium text-purple-200 mb-1">
+                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
                   Email Address
                 </label>
                 <input
@@ -146,15 +183,15 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                           placeholder-purple-300/50"
-                  placeholder="your@email.com"
+                  className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
+                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
+                             placeholder-purple-300/50"
+                  placeholder="XYZ@email.com"
                 />
               </div>
 
               <div className="input-group">
-                <label className="block text-sm font-medium text-purple-200 mb-1">
+                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
                   Phone Number
                 </label>
                 <input
@@ -164,33 +201,27 @@ const Register = () => {
                   onChange={handleChange}
                   required
                   pattern="[0-9]{10}"
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                           placeholder-purple-300/50"
+                  className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
+                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
+                             placeholder-purple-300/50"
                   placeholder="10-digit number"
                 />
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-4">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 sm:py-3 px-4 rounded-lg
-                         font-medium text-base sm:text-lg shadow-lg hover:shadow-purple-500/50 transition-all duration-300
-                         flex items-center justify-center gap-2"
+                className="regular w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-4 px-6 rounded-lg
+                           font-semibold text-lg sm:text-xl shadow-lg hover:shadow-purple-500/50 transition-all duration-300
+                           flex items-center justify-center gap-2"
               >
-                Register Now 
-                <span role="img" aria-label="party">🎊</span>
+                Register Now 🎊
               </motion.button>
             </div>
           </form>
-
-          <p className="mt-4 text-center text-sm text-purple-200">
-            Join us for an amazing evening of fun and celebration! 
-            <span role="img" aria-label="stars">✨</span>
-          </p>
         </div>
       </motion.div>
     </div>
