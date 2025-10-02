@@ -6,7 +6,7 @@ import Validate from './components/Validate'
 const App = () => {
   return (
     <div className='bg-[#18181B] ' >
-      <Routes className=''>
+      <Routes >
         <Route path="/" element={<Home />}/>
         <Route path="/register" element={<Register />} />
         <Route path="/validate/:rollno" element={<Validate />} />

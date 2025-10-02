@@ -10,13 +10,13 @@ const Home = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 to-purple-900 py-12 px-4 sm:px-6 lg:px-8">
-            <div className='flex flex-col justify-center items-center gap-8 md:gap-12'>
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 to-purple-900 py-12 px-4 sm:px-6 lg:px-8 ">
+            <div className='flex flex-col justify-center items-center gap-8 md:gap-12 mt-4 '>
                 <motion.h1 
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-4xl md:text-6xl font-extrabold text-center bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent drop-shadow-lg"
+                    className="paint text-5xl md:text-6xl font-extrabold text-center bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent drop-shadow-lg"
                 >
                      YRC Fresher Fiesta 
                 </motion.h1>
@@ -52,17 +52,16 @@ const Home = () => {
                              focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2
                              active:scale-95 w-[180px] h-[40px]"
                 >
-                    <span className="relative">Register Now</span>
+                    <span className="relative regular">Register Now</span>
                 </motion.button>
 
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="text-gray-300 text-center mt-4 max-w-md mx-auto "
+                    className="text-gray-300 text-center mt-4 max-w-md mx-auto text-1xl regular"
                 >
-                    Join us for an amazing evening of fun, music, and memories! 🌟
-                </motion.p>
+✨ Welcome Freshers! Your journey begins with fun, music & lifelong memories 🎶🎉                </motion.p>
             </div>
         </div>
     )
