@@ -68,28 +68,31 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-purple-900 py-6 px-3 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-purple-900 py-4 sm:py-6 px-3 sm:px-6 flex items-center justify-center">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="w-full max-w-3xl md:w-3/4 lg:w-2/5 h-auto min-h-[95vh] mx-auto bg-white/10 backdrop-blur-lg 
-                   rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.3)] overflow-auto flex justify-center"
+                   rounded-xl sm:rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.3)] overflow-auto"
       >
-        <div className="flex flex-col justify-between h-[100%] p-6 sm:p-8 md:p-10 gap-6">
-          <div className="text-center mb-6">
-            <h2 className="regular text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
+        <div className="flex flex-col items-center justify-start h-full p-4 sm:p-6 md:p-8 gap-4 sm:gap-6">
+          {/* Header Section */}
+          <div className="text-center w-full mb-4 sm:mb-6">
+            <h2 className="regular text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3">
               Join the Fiesta! 🎉
             </h2>
-            <p className="text-purple-200 text-sm sm:text-base md:text-lg">
-🎓 Only 1st-year students with a valid college ID card are allowed in the event ✅            </p>
+            <p className="text-purple-200 text-xs sm:text-sm md:text-base px-2 sm:px-4">
+              🎓 Only 1st-year students with a valid college ID card are allowed in the event ✅
+            </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5 flex flex-col gap-5">
-            {/* Bigger fields + labels */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="input-group">
-                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+          {/* Form Section - Added flex and center alignment */}
+          <form onSubmit={handleSubmit} className="flex flex-col items-center w-full space-y-6 px-2 sm:px-4">
+            {/* Name and Roll Number */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+              <div className="input-group w-full">
+                <label className="block text-sm sm:text-base md:text-lg font-medium text-purple-200 mb-1.5 sm:mb-2">
                   Full Name
                 </label>
                 <input
@@ -98,15 +101,15 @@ const Register = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className=" regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                             placeholder-purple-300/50"
+                  className="regular w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg bg-white/10 border border-purple-300/30 
+                           text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                           transition-all duration-300 placeholder-purple-300/50"
                   placeholder="Enter your name"
                 />
               </div>
-
-              <div className="input-group">
-                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+                
+              <div className="input-group w-full">
+                <label className="block text-sm sm:text-base md:text-lg font-medium text-purple-200 mb-1.5 sm:mb-2">
                   Roll Number
                 </label>
                 <input
@@ -115,16 +118,17 @@ const Register = () => {
                   value={formData.rollNo}
                   onChange={handleChange}
                   required
-                  className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                             placeholder-purple-300/50"
+                  className="regular w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg bg-white/10 border border-purple-300/30 
+                           text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                           transition-all duration-300 placeholder-purple-300/50"
                   placeholder="Enter roll number"
                 />
               </div>
             </div>
-
-            <div className="input-group">
-              <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+              <br />
+            {/* Course Input */}
+            <div className="input-group w-full">
+              <label className="block text-sm sm:text-base md:text-lg font-medium text-purple-200 mb-1.5 sm:mb-2">
                 Course
               </label>
               <input
@@ -133,15 +137,16 @@ const Register = () => {
                 value={formData.course}
                 onChange={handleChange}
                 required
-                className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                           placeholder-purple-300/50"
+                className="regular w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg bg-white/10 border border-purple-300/30 
+                         text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                         transition-all duration-300 placeholder-purple-300/50"
                 placeholder="Your course name"
               />
             </div>
-
-            <div className="input-group">
-              <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+              <br />
+            {/* Role Selection */}
+            <div className="input-group w-full">
+              <label className="block text-sm sm:text-base md:text-lg font-medium text-purple-200 mb-1.5 sm:mb-2">
                 Are you a participant or an audience?
               </label>
               <input
@@ -150,15 +155,16 @@ const Register = () => {
                 value={formData.role}
                 onChange={handleChange}
                 required
-                className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                           placeholder-purple-300/50"
+                className="regular w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg bg-white/10 border border-purple-300/30 
+                         text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                         transition-all duration-300 placeholder-purple-300/50"
                 placeholder="participant / audience"
               />
             </div>
-
-            <div className="input-group">
-              <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+              <br />
+            {/* Performance Type */}
+            <div className="input-group w-full">
+              <label className="block text-sm sm:text-base md:text-lg font-medium text-purple-200 mb-1.5 sm:mb-2">
                 If Participant, what are you performing? Otherwise type "N/A"
               </label>
               <input
@@ -167,16 +173,17 @@ const Register = () => {
                 value={formData.performance}
                 onChange={handleChange}
                 required
-                className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                           focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                           placeholder-purple-300/50"
+                className="regular w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg bg-white/10 border border-purple-300/30 
+                         text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                         transition-all duration-300 placeholder-purple-300/50"
                 placeholder="Dance / Singing / Fashion Show / Nukkad Natak / N/A"
               />
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="input-group">
-                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+              <br />
+            {/* Contact Information */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+              <div className="input-group w-full">
+                <label className="block text-sm sm:text-base md:text-lg font-medium text-purple-200 mb-1.5 sm:mb-2">
                   Email Address
                 </label>
                 <input
@@ -185,15 +192,15 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                             placeholder-purple-300/50"
+                  className="regular w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg bg-white/10 border border-purple-300/30 
+                           text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                           transition-all duration-300 placeholder-purple-300/50"
                   placeholder="XYZ@email.com"
                 />
               </div>
-
-              <div className="input-group">
-                <label className="block text-base md:text-lg font-medium text-purple-200 mb-2">
+                
+              <div className="input-group w-full">
+                <label className="block text-sm sm:text-base md:text-lg font-medium text-purple-200 mb-1.5 sm:mb-2">
                   Phone Number
                 </label>
                 <input
@@ -203,26 +210,29 @@ const Register = () => {
                   onChange={handleChange}
                   required
                   pattern="[0-9]{10}"
-                  className="regular w-full px-5 py-4 text-lg bg-white/10 border border-purple-300/30 text-white rounded-lg 
-                             focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300
-                             placeholder-purple-300/50"
+                  className="regular w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg bg-white/10 border border-purple-300/30 
+                           text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+                           transition-all duration-300 placeholder-purple-300/50"
                   placeholder="10-digit number"
                 />
               </div>
             </div>
-
-            <div className="pt-4">
+              <br />
+            {/* Submit Button */}
+            <div className="w-full flex justify-center pt-4">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="regular w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-4 px-6 rounded-lg
-                           font-semibold text-lg sm:text-xl shadow-lg hover:shadow-purple-500/50 transition-all duration-300
-                           flex items-center justify-center gap-2"
+                className="w-[80%] sm:w-[60%] md:w-[50%] bg-gradient-to-r from-purple-500 to-indigo-600 text-white 
+                         py-3.5 sm:py-4 px-6 sm:px-8 rounded-lg font-medium text-base sm:text-lg 
+                         shadow-lg hover:shadow-purple-500/50 transition-all duration-300
+                         flex items-center justify-center gap-2"
               >
                 Register Now 🎊
               </motion.button>
             </div>
+            <br />
           </form>
         </div>
       </motion.div>
