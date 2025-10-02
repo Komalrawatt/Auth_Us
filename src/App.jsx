@@ -5,15 +5,11 @@ import { Routes, Route } from 'react-router-dom'
 import Validate from './components/Validate'
 const App = () => {
   return (
-    <div className='bg-[#18181B] ' >
-      <Routes >
-        <Route path="/" element={<Home />}/>
-        <Route path="/register" element={<Register />} />
-        <Route path="/validate/:rollno" element={<Validate />} />
-
-      </Routes>
-    </div>
-
+    <Routes >
+      <Route path="/" element={<Home />}/>
+      <Route path="/register" element={<Register />} />
+      <Route path="/validate/:rollno" element={<Validate />} />
+    </Routes>
   )
 }
 
